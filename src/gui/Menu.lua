@@ -12,16 +12,16 @@
 
 Menu = Class{}
 
-function Menu:init(def)
+function Menu:init(def, cursor)
     self.panel = Panel(def.x, def.y, def.width, def.height)
-    
-    self.selection = Selection {
+    self.cursor = cursor or true
+    self.selection = Selection({
         items = def.items,
         x = def.x,
         y = def.y,
         width = def.width,
         height = def.height
-    }
+    }, self.cursor)
 end
 
 function Menu:update(dt)

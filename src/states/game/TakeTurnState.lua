@@ -206,17 +206,35 @@ function TakeTurnState:victory()
                     self.playerPokemon.currentExp = self.playerPokemon.currentExp + exp
 
                     -- level up if we've gone over the needed amount
-                    if self.playerPokemon.currentExp > self.playerPokemon.expToLevel then
+                    -- if self.playerPokemon.currentExp > self.playerPokemon.expToLevel then
+    -- level everytime so testing is easier
+    if self.playerPokemon.currentExp then
                         
                         gSounds['levelup']:play()
-
+                        local hp = self.playerPokemon.HP
+                        local att = self.playerPokemon.attack
+                        local def = self.playerPokemon.defense
+                        local sp = self.playerPokemon.speed
                         -- set our exp to whatever the overlap is
                         self.playerPokemon.currentExp = self.playerPokemon.currentExp - self.playerPokemon.expToLevel
-                        self.playerPokemon:levelUp()
-
+                        hpInc, attInc, defInc, speedInc = self.playerPokemon:levelUp()
+-- making changes here
                         gStateStack:push(BattleMessageState('Congratulations! Level Up!',
                         function()
-                            self:fadeOutWhite()
+                            gStateStack:push(VictoryMenuState(
+                                {
+                                   hpI = hpInc,
+                                   attI = attInc,
+                                   defI = defInc,
+                                   speedI = speedInc,
+                                   ogHp = hp,
+                                   ogAtt = att,
+                                   ogDef = def,
+                                   ogSp = sp
+
+                                }
+                            ))
+                            -- self:fadeOutWhite()
                         end))
                     else
                         self:fadeOutWhite()

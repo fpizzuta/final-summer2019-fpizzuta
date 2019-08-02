@@ -10,7 +10,6 @@ BattleMenuState = Class{__includes = BaseState}
 
 function BattleMenuState:init(battleState)
     self.battleState = battleState
-    
     self.battleMenu = Menu {
         x = VIRTUAL_WIDTH - 64,
         y = VIRTUAL_HEIGHT - 64,
