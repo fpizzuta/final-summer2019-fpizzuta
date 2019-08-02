@@ -17,15 +17,18 @@ function Selection:init(def,cursor)
     self.items = def.items
     self.x = def.x
     self.y = def.y
-    self.cursor = cursor or true
+    self.cursor = cursor
 
     self.height = def.height
     self.width = def.width
     self.font = def.font or gFonts['small']
 
     self.gapHeight = self.height / #self.items
-
-    self.currentSelection = 1
+    if self.cursor == false then
+        self.currentSelection = 0
+    else
+        self.currentSelection = 1
+    end
 end
 
 function Selection:update(dt)

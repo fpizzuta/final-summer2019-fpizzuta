@@ -14,14 +14,20 @@ Menu = Class{}
 
 function Menu:init(def, cursor)
     self.panel = Panel(def.x, def.y, def.width, def.height)
-    self.cursor = cursor or true
+    print("in menu cursor = "..tostring(cursor))
+    if cursor == nil then
+        cur = true
+    else
+        cur = false
+    end
+    print('now checking self.cursor = '..tostring(cur))
     self.selection = Selection({
         items = def.items,
         x = def.x,
         y = def.y,
         width = def.width,
         height = def.height
-    }, self.cursor)
+    }, cur)
 end
 
 function Menu:update(dt)

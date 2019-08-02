@@ -234,7 +234,11 @@ function TakeTurnState:victory()
 
                                 }
                             ))
-                            -- self:fadeOutWhite()
+                            -- After 2.5 seconds pop menu and then perform normal fadeout
+                            Timer.after(2.5, function()
+                                gStateStack:pop()
+                                self:fadeOutWhite()
+                            end)
                         end))
                     else
                         self:fadeOutWhite()
