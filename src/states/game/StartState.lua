@@ -10,7 +10,7 @@ StartState = Class{__includes = BaseState}
 
 function StartState:init()
     gSounds['intro-music']:play()
-
+    
     self.sprite = POKEMON_DEFS[POKEMON_IDS[math.random(#POKEMON_IDS)]].battleSpriteFront
     self.spriteX = VIRTUAL_WIDTH / 2 - 32
     self.spriteY = VIRTUAL_HEIGHT / 2 - 16

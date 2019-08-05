@@ -95,3 +95,5 @@ gSounds = {
     ['victory-music'] = love.audio.newSource('sounds/victory.wav'),
     ['intro-music'] = love.audio.newSource('sounds/intro.mp3')
 }
+
+log = {{text = 'No Battles Fought'}}

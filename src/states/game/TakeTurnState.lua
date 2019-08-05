@@ -32,6 +32,7 @@ function TakeTurnState:init(battleState)
         self.firstBar = self.battleState.opponentHealthBar
         self.secondBar = self.battleState.playerHealthBar
     end
+    self.log = self.log or {}
 end
 
 function TakeTurnState:enter(params)
@@ -129,7 +130,7 @@ function TakeTurnState:checkDeaths()
 end
 
 function TakeTurnState:faint()
-
+    table.insert(log,{text = 'Loss - '..self.opponentPokemon.name..' (w) vs '..self.playerPokemon.name})
     -- drop player sprite down below the window
     Timer.tween(0.2, {
         [self.playerSprite] = {y = VIRTUAL_HEIGHT}
@@ -167,7 +168,7 @@ function TakeTurnState:faint()
 end
 
 function TakeTurnState:victory()
-
+    table.insert(log,{text = 'Victory - '..self.playerPokemon.name..' (w) vs '..self.opponentPokemon.name})
     -- drop enemy sprite down below the window
     Timer.tween(0.2, {
         [self.opponentSprite] = {y = VIRTUAL_HEIGHT}
