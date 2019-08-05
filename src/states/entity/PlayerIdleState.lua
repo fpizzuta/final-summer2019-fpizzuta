@@ -21,5 +21,26 @@ function PlayerIdleState:update(dt)
     elseif love.keyboard.isDown('down') then
         self.entity.direction = 'down'
         self.entity:changeState('walk')
+    elseif love.keyboard.wasPressed('l') then
+            gStateStack:push(LogMenuState())
     end
+end
+
+function PlayerIdleState:fadeOutWhite()
+    -- fade in
+    gStateStack:push(FadeInState({
+        r = 255, g = 255, b = 255
+    }, 1, 
+    function()
+
+        -- resume field music
+        gSounds['victory-music']:stop()
+        gSounds['field-music']:play()
+        
+        -- pop off the log state
+        gStateStack:pop()
+        gStateStack:push(FadeOutState({
+            r = 255, g = 255, b = 255
+        }, 1, function() end))
+    end))
 end

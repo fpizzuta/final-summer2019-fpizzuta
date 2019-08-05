@@ -23,6 +23,7 @@ function Entity:init(def)
 
     -- halfway raised on the tile just to simulate height/perspective
     self.y = (self.mapY - 1) * TILE_SIZE - self.height / 2
+    self.log = false
 end
 
 function Entity:changeState(name)
