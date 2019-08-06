@@ -18,10 +18,10 @@ function LogMenuState:init()
         -- y = VIRTUAL_HEIGHT - 128,
         -- width = 256,
         -- height = 128,
-        x = 0,
-        y = 0,
-        width = VIRTUAL_WIDTH,
-        height = VIRTUAL_HEIGHT,
+        x = 10,
+        y = 10,
+        width = VIRTUAL_WIDTH-25,
+        height = VIRTUAL_HEIGHT-25,
         items = log
     },false)   
 end

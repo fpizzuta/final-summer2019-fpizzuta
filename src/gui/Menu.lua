@@ -20,7 +20,7 @@ function Menu:init(def, cursor)
     else
         cur = false
     end
-    print('now checking self.cursor = '..tostring(cur))
+    -- print('now checking self.cursor = '..tostring(cur))
     self.selection = Selection({
         items = def.items,
         x = def.x,

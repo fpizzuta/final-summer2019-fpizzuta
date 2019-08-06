@@ -23,7 +23,12 @@ function Selection:init(def,cursor)
     self.width = def.width
     self.font = def.font or gFonts['small']
 
-    self.gapHeight = self.height / #self.items
+    if cursor == true then
+        self.gapHeight = self.height / #self.items
+    else
+        self.gapHeight = 14
+        self.font = gFonts['small']
+    end
     if self.cursor == false then
         self.currentSelection = 0
     else
@@ -71,8 +76,11 @@ function Selection:render()
             love.graphics.draw(gTextures['cursor'], self.x - 8, paddedY)
         end
 
-        love.graphics.printf(self.items[i].text, self.x, paddedY, self.width, 'center')
-
+        if self.cursor == false then
+            love.graphics.printf(self.items[i].text, self.x+5, paddedY, self.width, 'left')
+        else 
+            love.graphics.printf(self.items[i].text, self.x, paddedY, self.width, 'center')
+        end
         currentY = currentY + self.gapHeight
     end
 end
